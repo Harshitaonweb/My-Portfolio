@@ -20,10 +20,25 @@ async function loadRepos() {
   const grid = document.getElementById('projectsGrid');
   try {
     const res = await fetch(
-      `https://api.github.com/users/${GITHUB_USER}/repos?sort=updated&per_page=6`
+      `https://api.github.com/users/${GITHUB_USER}/repos?sort=updated&per_page=30`
     );
     if (!res.ok) throw new Error('GitHub API error');
-    const repos = await res.json();
+    let repos = await res.json();
+
+    // Replace reactpractice with Weather-App
+    const hasReactPractice = repos.some(r => r.name.toLowerCase() === 'reactpractice');
+    const hasWeatherApp = repos.some(r => r.name.toLowerCase() === 'weather-app');
+    if (hasReactPractice && !hasWeatherApp) {
+      const weatherRes = await fetch(`https://api.github.com/repos/${GITHUB_USER}/Weather-App`);
+      if (weatherRes.ok) {
+        const weatherRepo = await weatherRes.json();
+        repos = repos.map(r => r.name.toLowerCase() === 'reactpractice' ? weatherRepo : r);
+      }
+    } else if (hasReactPractice) {
+      repos = repos.filter(r => r.name.toLowerCase() !== 'reactpractice');
+    }
+
+    repos = repos.slice(0, 6);
 
     grid.innerHTML = repos.map((repo, i) => {
       const border = BORDER_COLORS[i % 3];

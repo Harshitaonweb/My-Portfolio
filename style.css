@@ -177,6 +177,7 @@ body {
 }
 
 .bauhaus-btn:hover { background: var(--white); }
+.btn-blue-hero:hover { background: var(--ink); color: var(--white); }
 
 .bauhaus-btn:active {
   transform: translate(2px, 2px);

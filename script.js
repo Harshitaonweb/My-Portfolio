@@ -11,56 +11,69 @@ function updateTilt() {
 window.addEventListener('scroll', updateTilt, { passive: true });
 updateTilt();
 
-// ── GitHub Repos ──
-const GITHUB_USER = 'Harshitaonweb';
+// ── Projects (hardcoded) ──
+const PROJECTS = [
+  {
+    name: 'My-Portfolio',
+    desc: 'Personal portfolio built with a Bauhaus-inspired design system — 3D tilted stage, hard shadows, and primary colors.',
+    lang: 'CSS',
+    url: 'https://github.com/Harshitaonweb/My-Portfolio',
+    dot: 'dot-green'
+  },
+  {
+    name: 'Flappy-Bird-Game',
+    desc: 'A browser-based Flappy Bird clone built with vanilla JavaScript and HTML Canvas.',
+    lang: 'JavaScript',
+    url: 'https://github.com/Harshitaonweb/flappy-bird-game',
+    dot: 'dot-green'
+  },
+  {
+    name: 'Password Generator',
+    desc: 'Generates strong, customizable passwords with options for length, symbols, numbers, and case.',
+    lang: 'JavaScript',
+    url: 'https://github.com/Harshitaonweb/PasswordGenerator',
+    dot: 'dot-green'
+  },
+  {
+    name: 'Weather App',
+    desc: 'Real-time weather app using a public API — search any city and get live temperature, humidity, and conditions.',
+    lang: 'CSS',
+    url: 'https://github.com/Harshitaonweb/Weather-App',
+    dot: 'dot-green'
+  },
+  {
+    name: 'Stone Paper Scissor',
+    desc: 'Classic rock-paper-scissors game with score tracking and animated results, built in vanilla JS.',
+    lang: 'JavaScript',
+    url: 'https://github.com/Harshitaonweb/StonePaperScissor_game',
+    dot: 'dot-green'
+  },
+  {
+    name: 'Tic Tac Toe',
+    desc: 'Two-player Tic Tac Toe game with win detection, draw handling, and a reset button.',
+    lang: 'JavaScript',
+    url: 'https://github.com/Harshitaonweb/TicTacToe_Game',
+    dot: 'dot-green'
+  }
+];
+
 const BORDER_COLORS = ['card-border-red', 'card-border-blue', 'card-border-yellow'];
 
-async function loadRepos() {
+function renderProjects() {
   const grid = document.getElementById('projectsGrid');
-  try {
-    // Fetch latest repos + Weather-App in parallel
-    const [reposRes, weatherRes] = await Promise.all([
-      fetch(`https://api.github.com/users/${GITHUB_USER}/repos?sort=updated&per_page=30`),
-      fetch(`https://api.github.com/repos/${GITHUB_USER}/Weather-App`)
-    ]);
-
-    let repos = await reposRes.json();
-    const weatherRepo = weatherRes.ok ? await weatherRes.json() : null;
-
-    // Remove reactpractice, ensure Weather-App is included
-    repos = repos.filter(r => r.name.toLowerCase() !== 'reactpractice');
-
-    if (weatherRepo && !repos.find(r => r.name === weatherRepo.name)) {
-      repos.unshift(weatherRepo); // add at front if not already present
-    }
-
-    repos = repos.slice(0, 6);
-
-    grid.innerHTML = repos.map((repo, i) => {
-      const border = BORDER_COLORS[i % 3];
-      const dot = repo.fork ? 'dot-grey' : 'dot-green';
-      const lang = repo.language || 'HTML';
-      const desc = repo.description || 'A web development project.';
-      const updated = new Date(repo.updated_at).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
-
-      return `
-        <a href="${repo.html_url}" target="_blank" rel="noopener" class="project-card ${border}">
-          <div class="card-header">
-            <span class="card-title">${repo.name}</span>
-            <span class="status-dot ${dot}"></span>
-          </div>
-          <p class="card-desc">${desc}</p>
-          <div class="card-tags">
-            <span class="pill">${lang}</span>
-            ${repo.stargazers_count > 0 ? `<span class="pill">★ ${repo.stargazers_count}</span>` : ''}
-            <span class="pill">${updated}</span>
-          </div>
-        </a>`;
-    }).join('');
-
-  } catch (err) {
-    grid.innerHTML = `<p style="padding:24px;font-weight:700;">Could not load repos. <a href="https://github.com/${GITHUB_USER}" target="_blank">View on GitHub →</a></p>`;
-  }
+  grid.innerHTML = PROJECTS.map((p, i) => `
+    <a href="${p.url}" target="_blank" rel="noopener" class="project-card ${BORDER_COLORS[i % 3]}">
+      <div class="card-header">
+        <span class="card-title">${p.name}</span>
+        <span class="status-dot ${p.dot}"></span>
+      </div>
+      <p class="card-desc">${p.desc}</p>
+      <div class="card-tags">
+        <span class="pill">${p.lang}</span>
+        <span class="pill">HTML</span>
+      </div>
+    </a>
+  `).join('');
 }
 
-loadRepos();
+renderProjects();

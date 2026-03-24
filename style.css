@@ -146,7 +146,18 @@ body {
 .tag-yellow { background: var(--yellow); color: var(--ink); }
 .tag-white  { background: var(--white);  color: var(--ink); }
 
-/* ── Bauhaus Button ── */
+.hero-btns {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-blue-hero {
+  background: var(--blue);
+  color: var(--white);
+}
+
+.btn-blue-hero:hover { background: var(--ink); color: var(--white); }
 .bauhaus-btn {
   display: inline-block;
   width: fit-content;

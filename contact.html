@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -171,23 +172,48 @@
 </div>
 
 <script>
-function handleSubmit() {
-  const name    = document.getElementById('name').value.trim();
-  const email   = document.getElementById('email').value.trim();
-  const message = document.getElementById('message').value.trim();
+  // Replace these with your EmailJS credentials
+  const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';
+  const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';
+  const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
 
-  if (!name || !email || !message) {
-    alert('Please fill in your name, email, and message.');
-    return;
+  emailjs.init(EMAILJS_PUBLIC_KEY);
+
+  async function handleSubmit() {
+    const name    = document.getElementById('name').value.trim();
+    const email   = document.getElementById('email').value.trim();
+    const subject = document.getElementById('subject').value.trim() || 'Portfolio Contact';
+    const message = document.getElementById('message').value.trim();
+
+    if (!name || !email || !message) {
+      alert('Please fill in your name, email, and message.');
+      return;
+    }
+
+    const btn = document.querySelector('.submit-btn');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    try {
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+        from_name:    name,
+        from_email:   email,
+        subject:      subject,
+        message:      message,
+      });
+
+      document.getElementById('successMsg').style.display = 'block';
+      btn.textContent = 'Sent!';
+      document.getElementById('name').value    = '';
+      document.getElementById('email').value   = '';
+      document.getElementById('subject').value = '';
+      document.getElementById('message').value = '';
+    } catch (err) {
+      alert('Something went wrong. Please try again.');
+      btn.textContent = 'Send Message';
+      btn.disabled = false;
+    }
   }
-
-  // Opens default mail client with prefilled content
-  const subject = document.getElementById('subject').value.trim() || 'Portfolio Contact';
-  const body = `Hi Harshita,%0A%0AMy name is ${encodeURIComponent(name)}.%0A%0A${encodeURIComponent(message)}%0A%0AReply to: ${encodeURIComponent(email)}`;
-  window.location.href = `mailto:harshitaonweb@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
-
-  document.getElementById('successMsg').style.display = 'block';
-}
 </script>
 
 </body>

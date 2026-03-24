@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Harshita Raj</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red:    #D02020;
+    --blue:   #1040C0;
+    --yellow: #F0C020;
+    --ink:    #121212;
+    --bg:     #F0F0F0;
+    --white:  #FFFFFF;
+    --border: 4px solid #121212;
+    --shadow: 8px 8px 0px #121212;
+  }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+
+  .card {
+    background: var(--white);
+    border: var(--border);
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 560px;
+  }
+
+  .card-header {
+    background: var(--yellow);
+    border-bottom: var(--border);
+    padding: 24px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .card-header h1 {
+    font-size: 32px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+  }
+
+  .back-btn {
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    background: var(--ink);
+    color: var(--white);
+    border: var(--border);
+    padding: 8px 14px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.1s ease-in-out;
+  }
+
+  .back-btn:hover { background: var(--red); }
+
+  .card-body { padding: 32px; display: flex; flex-direction: column; gap: 20px; }
+
+  .field { display: flex; flex-direction: column; gap: 8px; }
+
+  label {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  input, textarea {
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 12px 14px;
+    border: var(--border);
+    background: var(--bg);
+    color: var(--ink);
+    outline: none;
+    border-radius: 0;
+    transition: all 0.1s ease-in-out;
+    resize: none;
+  }
+
+  input:focus, textarea:focus {
+    background: var(--white);
+    box-shadow: 4px 4px 0px var(--ink);
+  }
+
+  textarea { min-height: 140px; }
+
+  .submit-btn {
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: var(--blue);
+    color: var(--white);
+    border: var(--border);
+    box-shadow: var(--shadow);
+    padding: 14px 24px;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+    border-radius: 0;
+    width: 100%;
+  }
+
+  .submit-btn:hover { background: var(--ink); }
+
+  .submit-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 6px 6px 0px var(--ink);
+  }
+
+  .success-msg {
+    display: none;
+    background: var(--yellow);
+    border: var(--border);
+    padding: 14px 18px;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="card-header">
+    <h1>Get In Touch</h1>
+    <a href="index.html" class="back-btn">← Back</a>
+  </div>
+  <div class="card-body">
+    <div class="success-msg" id="successMsg">Message sent — I'll get back to you soon.</div>
+    <div class="field">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" placeholder="Jane Doe">
+    </div>
+    <div class="field">
+      <label for="email">Your Email</label>
+      <input type="email" id="email" placeholder="jane@example.com">
+    </div>
+    <div class="field">
+      <label for="subject">Subject</label>
+      <input type="text" id="subject" placeholder="Let's work together">
+    </div>
+    <div class="field">
+      <label for="message">Message</label>
+      <textarea id="message" placeholder="Tell me about your project or idea..."></textarea>
+    </div>
+    <button class="submit-btn" onclick="handleSubmit()">Send Message</button>
+  </div>
+</div>
+
+<script>
+function handleSubmit() {
+  const name    = document.getElementById('name').value.trim();
+  const email   = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
+
+  if (!name || !email || !message) {
+    alert('Please fill in your name, email, and message.');
+    return;
+  }
+
+  // Opens default mail client with prefilled content
+  const subject = document.getElementById('subject').value.trim() || 'Portfolio Contact';
+  const body = `Hi Harshita,%0A%0AMy name is ${encodeURIComponent(name)}.%0A%0A${encodeURIComponent(message)}%0A%0AReply to: ${encodeURIComponent(email)}`;
+  window.location.href = `mailto:harshitaonweb@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+
+  document.getElementById('successMsg').style.display = 'block';
+}
+</script>
+
+</body>
+</html>

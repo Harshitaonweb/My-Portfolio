@@ -68,7 +68,7 @@ const BORDER_COLORS = ['card-border-red', 'card-border-blue', 'card-border-yello
 function renderProjects() {
   const grid = document.getElementById('projectsGrid');
   grid.innerHTML = PROJECTS.map((p, i) => `
-    <a href="${p.url}" target="_blank" rel="noopener" class="project-card ${BORDER_COLORS[i % 3]}">
+    <div class="project-card ${BORDER_COLORS[i % 3]}">
       <div class="card-header">
         <span class="card-title">${p.name}</span>
         <span class="status-dot ${p.dot}"></span>
@@ -78,8 +78,11 @@ function renderProjects() {
         <span class="pill">${p.lang}</span>
         <span class="pill">HTML</span>
       </div>
-      <a href="${p.live}" target="_blank" rel="noopener" class="live-btn" onclick="event.stopPropagation()">Interact Live ↗</a>
-    </a>
+      <div class="card-actions">
+        <a href="${p.url}" target="_blank" rel="noopener" class="card-action-btn btn-ghost">GitHub →</a>
+        <a href="${p.live}" target="_blank" rel="noopener" class="card-action-btn btn-solid">Interact Live ↗</a>
+      </div>
+    </div>
   `).join('');
 }
 

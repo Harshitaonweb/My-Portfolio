@@ -196,10 +196,10 @@
 
     try {
       await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-        from_name:    name,
-        from_email:   email,
-        subject:      subject,
-        message:      message,
+        name:    name,
+        email:   email,
+        title:   subject,
+        message: message,
       });
 
       document.getElementById('successMsg').style.display = 'block';

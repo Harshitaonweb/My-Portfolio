@@ -18,6 +18,7 @@ const PROJECTS = [
     desc: 'Personal portfolio built with a Bauhaus-inspired design system — 3D tilted stage, hard shadows, and primary colors.',
     lang: 'CSS',
     url: 'https://github.com/Harshitaonweb/My-Portfolio',
+    live: 'https://harshita-raj-portfolio.vercel.app/',
     dot: 'dot-green'
   },
   {
@@ -25,6 +26,7 @@ const PROJECTS = [
     desc: 'A browser-based Flappy Bird clone built with vanilla JavaScript and HTML Canvas.',
     lang: 'JavaScript',
     url: 'https://github.com/Harshitaonweb/flappy-bird-game',
+    live: 'https://flappy-bird-game-delta.vercel.app/',
     dot: 'dot-green'
   },
   {
@@ -32,6 +34,7 @@ const PROJECTS = [
     desc: 'Generates strong, customizable passwords with options for length, symbols, numbers, and case.',
     lang: 'JavaScript',
     url: 'https://github.com/Harshitaonweb/PasswordGenerator',
+    live: 'https://passwordgenerator-ten-blue.vercel.app/',
     dot: 'dot-green'
   },
   {
@@ -39,6 +42,7 @@ const PROJECTS = [
     desc: 'Real-time weather app using a public API — search any city and get live temperature, humidity, and conditions.',
     lang: 'CSS',
     url: 'https://github.com/Harshitaonweb/Weather-App',
+    live: 'https://weather-app-three-dun-30.vercel.app/',
     dot: 'dot-green'
   },
   {
@@ -46,6 +50,7 @@ const PROJECTS = [
     desc: 'Classic rock-paper-scissors game with score tracking and animated results, built in vanilla JS.',
     lang: 'JavaScript',
     url: 'https://github.com/Harshitaonweb/StonePaperScissor_game',
+    live: 'https://stone-paper-scissor-game-orpin.vercel.app/',
     dot: 'dot-green'
   },
   {
@@ -53,6 +58,7 @@ const PROJECTS = [
     desc: 'Two-player Tic Tac Toe game with win detection, draw handling, and a reset button.',
     lang: 'JavaScript',
     url: 'https://github.com/Harshitaonweb/TicTacToe_Game',
+    live: 'https://tictactoe-gamehr.vercel.app/',
     dot: 'dot-green'
   }
 ];
@@ -72,6 +78,7 @@ function renderProjects() {
         <span class="pill">${p.lang}</span>
         <span class="pill">HTML</span>
       </div>
+      <a href="${p.live}" target="_blank" rel="noopener" class="live-btn" onclick="event.stopPropagation()">Interact Live ↗</a>
     </a>
   `).join('');
 }

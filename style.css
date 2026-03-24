@@ -490,3 +490,30 @@ body {
 
 /* ── Project card as link ── */
 a.project-card { text-decoration: none; color: inherit; }
+
+/* ── Live Button ── */
+.live-btn {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 8px 14px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: var(--ink);
+  color: var(--white);
+  border: 2px solid var(--ink);
+  text-decoration: none;
+  transition: all 0.1s ease-in-out;
+}
+
+.live-btn:hover {
+  background: var(--yellow);
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+.live-btn:active {
+  transform: translate(1px, 1px);
+}

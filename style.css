@@ -48,6 +48,11 @@ body {
   perspective-origin: 50% 30%;
   padding: 80px 40px 200px;
   min-height: 100vh;
+  pointer-events: none;
+}
+
+.tilted-plane, .tilted-plane * {
+  pointer-events: auto;
 }
 
 .tilted-plane {

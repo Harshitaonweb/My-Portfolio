@@ -18,7 +18,7 @@ const PROJECTS = [
     desc: 'Personal portfolio built with a Bauhaus-inspired design system — 3D tilted stage, hard shadows, and primary colors.',
     lang: 'CSS',
     url: 'https://github.com/Harshitaonweb/My-Portfolio',
-    live: 'https://harshita-raj-portfolio.vercel.app/',
+    live: null,
     dot: 'dot-green'
   },
   {
@@ -80,7 +80,7 @@ function renderProjects() {
       </div>
       <div class="card-actions">
         <a href="${p.url}" target="_blank" rel="noopener" class="card-action-btn btn-ghost">GitHub →</a>
-        <a href="${p.live}" target="_blank" rel="noopener" class="card-action-btn btn-solid">Interact Live ↗</a>
+        ${p.live ? `<a href="${p.live}" target="_blank" rel="noopener" class="card-action-btn btn-solid">Interact Live ↗</a>` : ''}
       </div>
     </div>
   `).join('');

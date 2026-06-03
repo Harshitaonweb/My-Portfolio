@@ -2,6 +2,10 @@
 const plane = document.getElementById('tiltedPlane');
 
 function updateTilt() {
+  if (window.innerWidth <= 900) {
+    plane.style.transform = 'none';
+    return;
+  }
   const scrollY = window.scrollY;
   const rx = Math.max(0, 12 - scrollY * 0.015);
   const ry = -8 + scrollY * 0.01;
@@ -9,6 +13,7 @@ function updateTilt() {
 }
 
 window.addEventListener('scroll', updateTilt, { passive: true });
+window.addEventListener('resize', updateTilt, { passive: true });
 updateTilt();
 
 // ── Projects (hardcoded) ──

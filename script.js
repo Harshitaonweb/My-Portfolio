@@ -35,11 +35,11 @@ const PROJECTS = [
     dot: 'dot-green'
   },
   {
-    name: 'Spellbound',
+    name: 'Study Sync',
     desc: 'An immersive word puzzle game with magical themes, smooth animations, and challenging levels.',
     lang: 'JavaScript',
     url: 'https://github.com/Harshitaonweb/Spellbound',
-    live: null,
+    live: 'https://study-sync-eight-psi.vercel.app/',
     dot: 'dot-green'
   },
   {

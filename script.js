@@ -51,19 +51,19 @@ const PROJECTS = [
     dot: 'dot-green'
   },
   {
-    name: 'Stone Paper Scissor',
-    desc: 'Classic rock-paper-scissors game with score tracking and animated results, built in vanilla JS.',
-    lang: 'JavaScript',
-    url: 'https://github.com/Harshitaonweb/StonePaperScissor_game',
-    live: 'https://stone-paper-scissor-game-orpin.vercel.app/',
-    dot: 'dot-green'
-  },
-  {
     name: 'Tic Tac Toe',
     desc: 'Two-player Tic Tac Toe game with win detection, draw handling, and a reset button.',
     lang: 'JavaScript',
     url: 'https://github.com/Harshitaonweb/TicTacToe_Game',
     live: 'https://tictactoe-gamehr.vercel.app/',
+    dot: 'dot-green'
+  },
+  {
+    name: 'Spellbound',
+    desc: 'An immersive word puzzle game with magical themes, smooth animations, and challenging levels.',
+    lang: 'JavaScript',
+    url: 'https://github.com/Harshitaonweb/Spellbound',
+    live: null,
     dot: 'dot-green'
   }
 ];

@@ -35,7 +35,7 @@ const PROJECTS = [
     dot: 'dot-green'
   },
   {
-    name: 'Study Sync',
+    name: 'Spellbound Library',
     desc: 'An immersive word puzzle game with magical themes, smooth animations, and challenging levels.',
     lang: 'JavaScript',
     url: 'https://github.com/Harshitaonweb/Spellbound',

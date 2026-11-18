@@ -35,6 +35,14 @@ const PROJECTS = [
     dot: 'dot-green'
   },
   {
+    name: 'Spellbound',
+    desc: 'An immersive word puzzle game with magical themes, smooth animations, and challenging levels.',
+    lang: 'JavaScript',
+    url: 'https://github.com/Harshitaonweb/Spellbound',
+    live: null,
+    dot: 'dot-green'
+  },
+  {
     name: 'Password Generator',
     desc: 'Generates strong, customizable passwords with options for length, symbols, numbers, and case.',
     lang: 'JavaScript',
@@ -56,14 +64,6 @@ const PROJECTS = [
     lang: 'JavaScript',
     url: 'https://github.com/Harshitaonweb/TicTacToe_Game',
     live: 'https://tictactoe-gamehr.vercel.app/',
-    dot: 'dot-green'
-  },
-  {
-    name: 'Spellbound',
-    desc: 'An immersive word puzzle game with magical themes, smooth animations, and challenging levels.',
-    lang: 'JavaScript',
-    url: 'https://github.com/Harshitaonweb/Spellbound',
-    live: null,
     dot: 'dot-green'
   }
 ];

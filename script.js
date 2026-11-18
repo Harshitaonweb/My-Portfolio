@@ -43,14 +43,6 @@ const PROJECTS = [
     dot: 'dot-green'
   },
   {
-    name: 'Password Generator',
-    desc: 'Generates strong, customizable passwords with options for length, symbols, numbers, and case.',
-    lang: 'JavaScript',
-    url: 'https://github.com/Harshitaonweb/PasswordGenerator',
-    live: 'https://passwordgenerator-ten-blue.vercel.app/',
-    dot: 'dot-green'
-  },
-  {
     name: 'Weather App',
     desc: 'Real-time weather app using a public API — search any city and get live temperature, humidity, and conditions.',
     lang: 'CSS',
@@ -64,6 +56,14 @@ const PROJECTS = [
     lang: 'JavaScript',
     url: 'https://github.com/Harshitaonweb/TicTacToe_Game',
     live: 'https://tictactoe-gamehr.vercel.app/',
+    dot: 'dot-green'
+  },
+  {
+    name: 'Password Generator',
+    desc: 'Generates strong, customizable passwords with options for length, symbols, numbers, and case.',
+    lang: 'JavaScript',
+    url: 'https://github.com/Harshitaonweb/PasswordGenerator',
+    live: 'https://passwordgenerator-ten-blue.vercel.app/',
     dot: 'dot-green'
   }
 ];
